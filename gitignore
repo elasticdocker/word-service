@@ -1,0 +1,12 @@
+.idea
+.vscode
+.tscache
+build
+coverage
+**/*node_modules
+*.log
+**/*.d.ts
+src/**/*.js
+src/**/*.js.map
+_test-output
+_tmp

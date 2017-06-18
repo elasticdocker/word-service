@@ -1,0 +1,60 @@
+{
+  "name": "my-server",
+  "version": "0.0.1",
+  "description": "My app tier",
+  "main": "build/app/server.js",
+  "typings": "build/app/server.d.ts",
+  "config": {
+    "ghooks": {
+      "pre-commit": "npm run lint"
+    },
+    "webhook": "https://hooks.slack.com/services/MY_ID"
+  },
+  "scripts": {
+    "clean": "rimraf -rf build && rimraf -rf public",
+    "compile": "tsc",
+    "doc": "apidoc -i app/api/ -o public/",
+    "build": "npm run clean && npm run compile",
+    "start": "node build/app/server.js",
+    "lint": "tslint ./src/**/*.ts -t verbose",
+    "patch": "npm version patch",
+    "preversion": "npm run build && npm run lint",
+    "postversion": "git push origin --tags HEAD && npm publish"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "core-js": "^2.4.1",
+    "cores": "^0.8.5",
+    "cors": "^2.8.1",
+    "express": "^4.14.0"
+  },
+  "files": [
+    "build",
+    "Dockerfile",
+    ".dockerignore",
+    "tsconfig.json"
+  ],
+  "engines": {
+    "node": ">=5.7.1",
+    "npm": ">=3.6.0"
+  },
+  "devDependencies": {
+    "@types/body-parser": "0.0.33",
+    "@types/cors": "0.0.33",
+    "@types/express": "^4.0.34",
+    "@types/node": "0.0.2",
+    "apidoc": "^0.17.5",
+    "ghooks": "^2.0.0",
+    "rimraf": "^2.6.1",
+    "slack-node": "^0.1.8",
+    "tslint": "^4.0.2",
+    "typescript": "^2.3.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "publishConfig": {
+    "registry": "https://TODO_ADD_ARTIFACTORY"
+  }
+}

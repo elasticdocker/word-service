@@ -1,0 +1,113 @@
+{
+	"variables": [],
+	"info": {
+		"name": "hangman",
+		"_postman_id": "679debf3-76f3-def2-4d84-726504545932",
+		"description": "GET 'word'",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:3020/api/hangman/v1/game/1234",
+			"request": {
+				"url": "localhost:3020/api/hangman/v1/game/1234",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"selectedArr\": [\"A\", \"B\"],\n\t\"randomWordArr\": [\"O\", \"H\", \"I\", \"O\"]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3020/api/hangman/v1/game/1234",
+			"request": {
+				"url": "localhost:3020/api/hangman/v1/game/1234",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"selectedArr\": [\"A\", \"B\"],\n\t\"randomWordArr\": [\"O\", \"H\", \"I\", \"O\"]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3020/api/hangman/v1/word?gameType=stateName",
+			"request": {
+				"url": "localhost:3020/api/hangman/v1/word?gameType=stateName",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "elb-2-1989020330.us-west-2.elb.amazonaws.com/api/hangman/v1/word?gameType=firstName",
+			"request": {
+				"url": "elb-2-1989020330.us-west-2.elb.amazonaws.com/api/hangman/v1/word?gameType=firstName",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "elb-2-1989020330.us-west-2.elb.amazonaws.com/api/hangman/v1/game/1234",
+			"request": {
+				"url": "elb-2-1989020330.us-west-2.elb.amazonaws.com/api/hangman/v1/game/1234",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"selectedArr\": [\"A\", \"B\"],\n\t\"randomWordArr\": [\"O\", \"H\", \"I\", \"O\"]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "elb-2-1989020330.us-west-2.elb.amazonaws.com/api/hangman/v1/game/1234",
+			"request": {
+				"url": "elb-2-1989020330.us-west-2.elb.amazonaws.com/api/hangman/v1/game/1234",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"selectedArr\": [\"A\", \"B\"],\n\t\"randomWordArr\": [\"O\", \"H\", \"I\", \"O\"]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
