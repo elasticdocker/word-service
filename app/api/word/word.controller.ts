@@ -1,6 +1,7 @@
 import { Payload } from '../payload';
 import { FirstNameService, StateNameService } from '../../dao';
-import { Logger }from '../../logger'
+import { Logger }from '../../logger';
+
 export class WordController {
 
 	private firstNameService;

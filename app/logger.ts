@@ -19,7 +19,7 @@ export class Logger {
 		morgan.token('aws-log', (req, res) => {
 			req.headers['x-aws-log']
 		});
-		const logFormat = ':client-ip :server-ip - [:date[clf]] ":method :url HTTP/:http-version" :status :service-log :aws-log :res[content-length] :response-time ms';
+		const logFormat = ':date[iso] :client-ip :server-ip ":method :url HTTP/:http-version" :status :service-log :aws-log :res[content-length] :response-time ms';
 		Logger.logger = morgan(logFormat, {stream: logStream});
 	}
 
