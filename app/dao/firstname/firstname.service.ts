@@ -1,14 +1,19 @@
 import { DynamoDb } from '../dynamoDb-util';
 
-export class WordService {
+export class FirstNameService {
 
-	public static getWord(gameType: string): Promise<any> {
+	protected dynamodb;
+
+	constructor() {
+		this.dynamodb = new DynamoDb().getDynamodb();
+	}
+
+	public  getWord(): Promise<string> {
 		const num: number = Math.floor(Math.random() * 5) + 1;
-		const dynamodb = new DynamoDb().getDynamodb();
 		const params = {
-			TableName: 'words',
+			TableName: 'firstname',
 			Key: {
-				id: {N: num.toString()}
+				id: {S: num.toString()}
 			},
 			AttributesToGet: [
 				'word'
@@ -18,7 +23,7 @@ export class WordService {
 		let randomWord: string;
 
 		return new Promise<string>((resolve, reject) => {
-			dynamodb.getItem(params, function (err, data) {
+			this.dynamodb.getItem(params, function (err, data) {
 				if (err) {
 					reject(err.toString());
 				} else {

@@ -1,1 +1,7 @@
-
+app
+*.log
+*.json
+.*
+*.md
+coverage
+!package.json

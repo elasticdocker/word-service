@@ -1,9 +1,9 @@
 import * as express from "express";
-import HangmanController from './hangman.controller';
+import { WordController } from './word.controller';
 
 const router = express.Router();
 
-const hangmanCtrl = new HangmanController();
+const wordController = new WordController();
 
 // Add all routes
 
@@ -17,7 +17,7 @@ const hangmanCtrl = new HangmanController();
  */
 // Though word and words mean different as per REST constrains (but below * is user friendly)
 
-router.get('/v1/word*', hangmanCtrl.getWord);
+router.get('/v1/word*', wordController.getWord());
 
 module.exports = router;
 

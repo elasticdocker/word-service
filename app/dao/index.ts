@@ -1,2 +1,3 @@
 // export all DAO services
-export * from './word-gen'
+export * from './firstname';
+export * from './statename';

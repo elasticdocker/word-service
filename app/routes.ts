@@ -4,5 +4,5 @@
 
 export default function (app: any) {
 	// Insert all routes below
-	app.use('/api', require('./api/hangman'));
+	app.use('/api', require('./api/word'));
 }
