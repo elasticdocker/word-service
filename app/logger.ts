@@ -12,14 +12,14 @@ export class Logger {
 		morgan.token('client-ip', (req, res) => {
 			const headerIp = req.headers['x-forwarded-for'];
 			const connectionIp = req.connection.remoteAddress;
-			return headerIp ? headerIp : '' + ' ' + connectionIp ? connectionIp : '';
+			return '[' + headerIp ? headerIp : '' + '] [' + connectionIp ? connectionIp : '' +']';
 		});
 		morgan.token('server-ip', () => os.hostname());
 		morgan.token('service-log', (req, res) => res._headers['x-service-log']);
 		morgan.token('aws-log', (req, res) => {
-			req.headers['x-aws-log']
+			req.headers['x-apigateway-log']
 		});
-		const logFormat = ':date[iso] :client-ip :server-ip ":method :url HTTP/:http-version" :status :service-log :aws-log :res[content-length] :response-time ms';
+		const logFormat = ':date[iso] ":client-ip" :server-ip ":method :url HTTP/:http-version" :status ":service-log" ":aws-log" :res[content-length] ":response-time ms"';
 		Logger.logger = morgan(logFormat, {stream: logStream});
 	}
 
