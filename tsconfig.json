@@ -2,7 +2,7 @@
     "compileOnSave": true,
     "compilerOptions": {
         "rootDir": ".",
-        "outDir": "build",
+        "outDir": "dist",
         "target": "es2015",
         "module": "commonjs",
         "moduleResolution": "node",

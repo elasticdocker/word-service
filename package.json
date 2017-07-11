@@ -1,9 +1,9 @@
 {
-  "name": "my-server",
+  "name": "game-server",
   "version": "0.0.1",
   "description": "My app tier",
-  "main": "build/app/server.js",
-  "typings": "build/app/server.d.ts",
+  "main": "dist/app/server.js",
+  "typings": "dist/app/server.d.ts",
   "config": {
     "ghooks": {
       "pre-commit": "npm run lint"
@@ -11,16 +11,19 @@
     "webhook": "https://hooks.slack.com/services/MY_ID"
   },
   "scripts": {
-    "clean": "rimraf -rf build && rimraf -rf public",
+    "clean": "rimraf -rf dist && rimraf -rf public",
     "compile": "tsc",
     "doc": "apidoc -i app/api/ -o public/",
     "build": "npm run clean && npm run compile",
     "watch": "tsc -w",
-    "start": "node build/app/server.js",
+    "start": "node dist/app/server.js",
     "lint": "tslint ./src/**/*.ts -t verbose",
     "patch": "npm version patch",
     "preversion": "npm run build && npm run lint",
-    "postversion": "git push origin --tags HEAD && npm publish"
+    "postversion": "git push origin --tags HEAD && npm publish",
+    "docker-build": "docker build -t elasticdocker/word-service:02 .",
+    "docker-push": "docker push elasticdocker/word-service:02",
+    "docker-publish": "npm run build && npm run docker-build && npm run docker-push"
   },
   "dependencies": {
     "aws-sdk": "^2.80.0",
@@ -32,7 +35,7 @@
     "morgan": "^1.8.2"
   },
   "files": [
-    "build",
+    "dist",
     "Dockerfile",
     ".dockerignore",
     "tsconfig.json"
@@ -48,6 +51,7 @@
     "@types/node": "0.0.2",
     "apidoc": "^0.17.5",
     "ghooks": "^2.0.0",
+    "nodemon": "^1.11.0",
     "rimraf": "^2.6.1",
     "slack-node": "^0.1.8",
     "tslint": "^4.0.2",

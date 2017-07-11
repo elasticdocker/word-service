@@ -13,19 +13,16 @@ RUN echo 'export PS1="\[\033[90m\]\u@iris.node\[\033[m\]: \[\033[33;1m\]\W\[\033
 
 WORKDIR /var/application
 
-# Test should run within docker container (but tests should not be part of published artifact)
-COPY build build
-COPY node_modules node_modules
-#COPY public public
-
-# remove nodemon because docker should die when node die (And nodemon won't let it die)
-# And an external reconciliation engine like kubernetes to re-start
-RUN npm install -g nodemon
-
 VOLUME [$VOLUME_LOG]
 
 #EXPOSE $PORT
 EXPOSE 3200
 
+# remove nodemon because docker should die when node die (And nodemon won't let it die)
+# And an external reconciliation engine like kubernetes to re-start
+ENTRYPOINT ["./node_modules/.bin/nodemon", "dist/app/server.js"]
 
-ENTRYPOINT ["nodemon", "build/app/server.js"]
+# Test should run within docker container (but tests should not be part of published artifact)
+COPY node_modules node_modules
+#COPY public public
+COPY dist dist
